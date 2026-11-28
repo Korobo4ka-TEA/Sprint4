@@ -66,6 +66,7 @@ public class OrderPage {
     public void submitAndConfirm() {
         field(submit).click();
         field(confirm).click();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(confirm));
     }
 
     public String readConfirmation() {

@@ -5,12 +5,13 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 
 public class MainPage {
+    private static final String MAIN_PAGE_URL = "https://qa-scooter.praktikum-services.ru/";
     private WebDriver driver;
     private WebDriverWait wait;
     // Кнопка согласия на использование cookie
     private By cookies = By.id("rcc-confirm-button");
     // Верхняя кнопка «Заказать»
-    private By topOrder = By.xpath("//header//button[normalize-space()='Заказать'] | //div[contains(@class,'Header_Header')]//button[normalize-space()='Заказать']");
+    private By topOrder = By.xpath("//div[contains(@class,'Header_Header')]//button[normalize-space()='Заказать']");
     // Нижняя кнопка «Заказать»
     private By bottomOrder = By.xpath("//div[contains(@class,'Home_FinishButton')]//button[normalize-space()='Заказать']");
 
@@ -20,7 +21,7 @@ public class MainPage {
     }
 
     public void open() {
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(MAIN_PAGE_URL);
         if (!driver.findElements(cookies).isEmpty()) {
             wait.until(ExpectedConditions.elementToBeClickable(cookies)).click();
         }
